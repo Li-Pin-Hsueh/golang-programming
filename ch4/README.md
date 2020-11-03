@@ -31,3 +31,34 @@ Slice的型別寫作[]T，其中T為元素型別。Array和Slice緊密相關，s
 **切割超過cap將造成panic，但切割超過len則會擴張slice**
 
 由於slice帶有陣列元素的指標，傳遞slice給函式可以修改底層陣列元素。但要注意slice不能比較，只能夠自行撰寫。原因之一是slice的元素是間接的，隨著底層陣列被修改，slice的值在不同時間有可能會有差異。
+
+## 4.3 Map
+雜湊是最靈活的資料結構，在Go語言中，map是雜湊表的參考，map的型別寫做map[K]V，其中K與V為鍵與值的型別，所有的鍵為相同型別，所有值亦然，**鍵值K型別必須能夠用==來執行比較**。
+
+內建的make函數可用來建構map：
+```
+ages := make(map[string]int) //字串為鍵值
+```
+帶有初始值的map：
+```
+ages := map[string]int {
+  "alice"   : 34,
+  "charlie" : 31,
+}
+```
+上述等同於：
+```
+ages := make[map[string]int]
+ages["alice"]   = 34
+ages["charlie"] = 31
+```
+
+**map元素不是變數**，不能取得它的位址：
+```
+_ = &ages["alice"] //編譯錯誤
+```
+原因是一個成長中的map可能導致現有元素重新計算雜湊而放在新的位置，導致位址無效。
+
+map型別的零值為nil
+
+## 4.4 Struct
