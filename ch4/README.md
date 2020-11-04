@@ -62,3 +62,13 @@ _ = &ages["alice"] //編譯錯誤
 map型別的零值為nil
 
 ## 4.4 Struct
+見範例程式 treesort.go
+
+## 4.5 JSON
+JSON是JavaScript值，字串、數字、布林、陣列，與物件的**Unicode文字編碼**。
+
+JSON陣列是有序的一系列值，寫成以方括號包圍，逗號分隔的清單；JSON陣列用於Go的array與slice的編碼。
+
+JSON物件是字串與值的對應，寫成一系列的name:value對，由逗號分隔，以括號包圍；JSON物件用於Go的map與struct的編碼。
+
+將Go程式之資料結構轉換為JSON，見範例movie.go
